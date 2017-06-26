@@ -11,6 +11,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {LoginPage} from "../pages/login/login";
 import {Auth} from "../providers/auth";
 import {AccountPage} from "../pages/account/account";
+import {AngularFireAuthModule} from "angularfire2/auth";
+import {AngularFireModule} from "angularfire2";
+import {AngularFireDatabaseModule} from "angularfire2/database";
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyADq7Yy283TsNxxs8x-hXfD1k3lyeJQDZI",
+  authDomain: "dawg-chat.firebaseapp.com",
+  databaseURL: "https://dawg-chat.firebaseio.com",
+  projectId: "dawg-chat",
+  storageBucket: "dawg-chat.appspot.com",
+  messagingSenderId: "959884748484"
+};
 
 @NgModule({
   declarations: [
@@ -22,7 +34,10 @@ import {AccountPage} from "../pages/account/account";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
