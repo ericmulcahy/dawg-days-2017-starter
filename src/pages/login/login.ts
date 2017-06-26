@@ -36,7 +36,10 @@ export class LoginPage {
   }
 
   createAccount() {
-    console.log('Create account clicked!');
-    this.navCtrl.push(TabsPage);
+    this.auth.createAccount(this.email, this.password).then(user => {
+      this.navCtrl.push(TabsPage);
+    }, error => {
+      console.log('error creating account! error: ' + error);
+    });
   }
 }
