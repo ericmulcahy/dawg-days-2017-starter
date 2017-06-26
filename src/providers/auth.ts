@@ -10,7 +10,7 @@ export class Auth {
   }
 
   signin(credentials) {
-    return Promise.resolve({uid: '123456', email: credentials.email});
+    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
   }
 
   createAccount(email, password) {
@@ -18,5 +18,9 @@ export class Auth {
       .then(data => {
         console.log('successfully created an account! ', data);
       });
+  }
+
+  currentAuthState() {
+    return this.afAuth.authState;
   }
 }
